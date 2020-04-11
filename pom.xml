@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>eu.lukasschoerghuber</groupId>
 	<artifactId>publictransporthero</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0</version>
 	<name>publictransporthero</name>
 	<description>Telegram bot for planning city trips using public transport</description>
 
@@ -49,6 +49,12 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots-spring-boot-starter</artifactId>
+			<version>4.7</version>
 		</dependency>
 	</dependencies>
 

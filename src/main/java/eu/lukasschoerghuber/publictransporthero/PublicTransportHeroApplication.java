@@ -2,12 +2,15 @@ package eu.lukasschoerghuber.publictransporthero;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.telegram.telegrambots.ApiContextInitializer;
 
 @SpringBootApplication
-public class PublictransportheroApplication {
+public class PublicTransportHeroApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PublictransportheroApplication.class, args);
+		ApiContextInitializer.init();
+
+		SpringApplication.run(PublicTransportHeroApplication.class, args);
 	}
 
 }
