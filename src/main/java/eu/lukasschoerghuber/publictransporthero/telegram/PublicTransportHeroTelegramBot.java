@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 @Component
 public class PublicTransportHeroTelegramBot extends TelegramLongPollingBot {
@@ -56,10 +56,10 @@ public class PublicTransportHeroTelegramBot extends TelegramLongPollingBot {
                 IntentHandler intentHandler = (IntentHandler) intentHandlerConstructor.newInstance();
                 var replyMessage = intentHandler.handleIntent(message, context);
                 this.execute(replyMessage);
-            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | InvocationTargetException | NoSuchElementException exception) {
                 // TODO: log error
-                System.err.printf("Could not find handler for intent '%s'%n", intentName);
-                e.printStackTrace();
+                System.err.printf("Could not instantiate the handler for intent '%s'%n", intentName);
+                exception.printStackTrace();
             } catch (TelegramApiException exception) {
                 // TODO: log error
                 exception.printStackTrace();
